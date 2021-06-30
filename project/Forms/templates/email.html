@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% load static custom_tags %}
+{% block css %}
+
+{% endblock %}
+{% block content %}
+
+{% for i in value_list %}
+    
+    <div class="row">
+        {% for key,value in i.items %}
+        <h1>{{key}}:</h1>
+        <h1>{{value}}</h1>
+        {% endfor %}
+    </div>
+    
+   
+{% endfor %}
+
+{% endblock  %}

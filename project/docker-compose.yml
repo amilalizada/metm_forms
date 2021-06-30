@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - ../postgresdb/:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: 'metm_db_name'
+      POSTGRES_USER: 'metm_user_name'
+      POSTGRES_PASSWORD: '123'
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    # command: redis-server --requirepass $REDIS_PASSWORD
+    restart: "always"
+    

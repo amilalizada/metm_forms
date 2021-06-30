@@ -1,0 +1,62 @@
+.head{
+    background-color: #F3F3F3;
+    width: 798px;
+    height:115px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+}
+.up-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    background-color: #3c6691;
+}
+.form-div{
+    /* background-color: white;
+    width: 798px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form{
+    background-color: white;
+    width: 798px;
+    padding: 10px 25px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+.display-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-control{
+    height: 30px;
+    width: 99%;
+    border-radius: 2px;
+}
+.important{
+    color:red;
+}
+.sumbit-button{
+    background-color: #18b4c2 !important;
+    border-color: #18b4c2 !important;
+    color: white;
+    border: 0px;
+    width: 120px;
+    height: 40px;
+}
+.submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error_message{
+    color: red;
+}

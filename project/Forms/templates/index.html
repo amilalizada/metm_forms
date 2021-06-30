@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static custom_tags %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+
+<section class="up-section mt-4">
+    <div class="head">
+        <h2 class=" ml-4">{{objects}}</h2>
+        <p class=" ml-4">*işarəsi qoyulan bölmələrin doldurulması məcburidir.</p>
+    </div>
+</section>
+<div class="form-div mb-4">
+
+
+    <form class="form" method="POST" action="">
+        <!-- <script src='https://www.google.com/recaptcha/api.js'></script>
+        <div class="g-recaptcha" data-sitekey="6Lelp9oZAAAAAMbC57GEd09tiuwa3vy9Z1KP_Gk2"></div> -->
+        {% csrf_token %}
+
+        {% for field in objects.form_relation.all %}
+        <div class="form-group">
+            <div class="row display-div">
+                <div class="labels col-4">
+                    {{field.label}}:
+                    {% if field.requirement == True %}
+                    <span class="important">*</span>
+                    {% endif %}
+
+                </div>
+
+                <div class="inputs col-8">
+                    {% if field.types == '1' %}
+                    <input class="form-control mt-3" type="text" name={{field.label}}-{{field.id}}
+                        {% if field.default_value %} value={{field.default_value}} {% endif %}>
+                    {% endif %}
+                    {% if field.types == '5' %}
+                    <textarea class="form-control mt-3" name={{field.label}}-{{field.id}} {% if field.default_value %}
+                        value={{field.default_value}} {% endif %}></textarea>
+                    {% endif %}
+                    {% if field.types == '2' %}
+                    <input class="form-control mt-3" type="number" name={{field.label}}-{{field.id}}
+                        {% if field.default_value %} value={{field.default_value}} {% endif %}>
+                    {% endif %}
+                    {% if field.types == '3' %}
+                    <input class="form-control mt-3" type="date" name={{field.label}}-{{field.id}}>
+                    {% endif %}
+                    {% if error %}
+                    {{error_}}
+                    {% endif %}
+                    {% if field.types == '4' %}
+                    <input class="form-control mt-3" type="datetime-local" name={{field.label}}-{{field.id}}
+                        {% if field.default_value %} value={{field.default_value}} {% endif %}>
+                    {% endif %}
+                    {% if field.types == '6' %}
+                    <input class="form-control mt-3" type="email" name={{field.label}}-{{field.id}}
+                        {% if field.default_value %} value={{field.default_value}} {% endif %}>
+                    {% endif %}
+
+                    {% if field.types == '7' %}
+                    {% if field.default_value %}
+                    {% all_opt field.default_value as options_list %}
+                    <select id="select" class="form-control mt-3">
+                        {% for opt in options_list %}
+                        <option>{{opt}}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                    {% endif %}
+
+
+
+                    {% if err_list %}
+                    <p class="error_message">{{ err_list|get_item:field.label}}</p>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+        <div class="form-group submit mt-5">
+            <input type="submit" value="Gonder" class="sumbit-button">
+        </div>
+    </form>
+</div>
+
+{% endblock  %}
